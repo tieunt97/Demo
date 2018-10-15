@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
-class SignIn extends Component {
+class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            fullName: "",
             email: "",
-            password: ""
+            password: "",
+            passwordConfirm: ""
         }
         this.handleOnChange = this.handleOnChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -23,12 +25,18 @@ class SignIn extends Component {
     }
 
     render() {
-        const { email, password } = this.state;
+        const { email, password, fullName, passwordConfirm } = this.state;
         return (
             <div className="row">
                 <div className="col-sm-6 col-sm-push-3 text-left">
                     <form onSubmit={this.handleSubmit}>
-                        <legend>Login</legend>
+                        <legend>Register</legend>
+
+                        <div className="form-group">
+                            <label htmlFor="fullName">Full Name</label>
+                            <input type="text" className="form-control" id="fullName" name="fullName" placeholder="Full Name"
+                                value={fullName} onChange={this.handleOnChange} />
+                        </div>
 
                         <div className="form-group">
                             <label htmlFor="email">Email</label>
@@ -42,7 +50,13 @@ class SignIn extends Component {
                                 value={password} onChange={this.handleOnChange} />
                         </div>
 
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <div className="form-group">
+                            <label htmlFor="passwordConfirm">Password Confirm</label>
+                            <input type="password" className="form-control" id="passwordConfirm" name="passwordConfirm" placeholder="Password Confirm"
+                                value={passwordConfirm} onChange={this.handleOnChange} />
+                        </div>
+
+                        <button type="submit" className="btn btn-primary">SignUp</button>
                     </form>
                 </div>
             </div>
@@ -50,4 +64,4 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn;
+export default SignUp;
